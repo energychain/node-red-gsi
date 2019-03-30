@@ -1,0 +1,26 @@
+<script type="text/javascript">
+    RED.nodes.registerType('best-hour',{
+        category: 'GSI',
+        color: '#a6bbcf',
+        defaults: {
+            zip: {value:"69256"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "bridge-dash.png",
+        label: function() {
+            return 'GSI-Retrieve best hour of the next day(s)';
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="best-hour">
+    <div class="form-row">
+        <label for="node-input-zip"><i class="icon-tag"></i> Postleitzahl</label>
+        <input type="text" id="node-input-zip" placeholder="(10117)">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="best-hour">
+    <p>Retrieves forecasted Green Power Index (Corrently GrünstromIndex) best hours for given ZIP-Code</p>
+</script>

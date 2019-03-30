@@ -1,0 +1,35 @@
+{
+	"name": "node-red-gsi",
+	"version": "1.0.0",
+	"description": "GSI (GrünstromIndex) Node for Node-Red",
+	"keywords": [
+		"node-red",
+		"gsi",
+		"blockchain",
+		"corrently"
+	],
+	"homepage": "https://github.com/energychain/node-red-gsi#readme",
+	"bugs": {
+		"url": "https://github.com/energychain/node-red-gsi/issues"
+	},
+	"license": "ISC",
+	"author": "STROMDAO <kontakt@stromdao.de>",
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/energychain/node-red-gsi.git"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"dependencies": {
+		"request": "^2.88.0"
+	},
+	"node-red": {
+		"nodes": {
+			"retrieve-forecast": "retrieve-forecast.js",
+			"best-hour": "best-hour.js",
+			"current-value": "current-value.js"
+		}
+	}
+}
