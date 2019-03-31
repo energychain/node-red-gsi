@@ -1,0 +1,31 @@
+<script type="text/javascript">
+    RED.nodes.registerType('varta-storage-meter',{
+        category: 'GrünstromIndex',
+        color: '#a6bbcf',
+        defaults: {
+            zip: {value:"69256"},
+            DEVICE_IP: {value:"192.168.0.31"},
+        },
+        inputs:1,
+        outputs:1,
+        icon: "bridge-dash.png",
+        label: function() {
+            return 'VARTA Storage Meter';
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="varta-storage-meter">
+    <div class="form-row">
+        <label for="node-input-zip"><i class="icon-tag"></i> Postleitzahl</label>
+        <input type="text" id="node-input-zip" placeholder="(10117)">
+    </div>
+    <div class="form-row">
+        <label for="node-input-DEVICE_IP"><i class="icon-tag"></i> IP Adresse VARTA Engion/Element Speicher</label>
+        <input type="text" id="node-input-DEVICE_IP" placeholder="(192.168.1.2)">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="varta-storage-meter">
+    <p>Decorates VARTA Storage Reading with GrünstromIndex relatated OBIS Codes (e.q. 1.8.1 and 1.8.2)</p>
+</script>

@@ -25,7 +25,8 @@
 	"dependencies": {
 		"gsi-discovergy": "^1.0.1",
 		"node-red-dashboard": "^2.14.0",
-		"request": "^2.88.0"
+		"request": "^2.88.0",
+		"varta_engion_gsi_obis": "^1.0.0"
 	},
 	"node-red": {
 		"nodes": {
@@ -33,7 +34,8 @@
 			"best-hour": "best-hour.js",
 			"current-value": "current-value.js",
 			"decorate-obis": "decorate-obis.js",
-			"discovergy-meter": "discovergy-meter.js"
+			"discovergy-meter": "discovergy-meter.js",
+			"varta-storage-meter": "varta-storage-meter.js"
 		}
 	}
 }
