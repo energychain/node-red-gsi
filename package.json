@@ -1,6 +1,6 @@
 {
 	"name": "node-red-contrib-gsi",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "GSI (GrünstromIndex) Node for Node-Red",
 	"keywords": [
 		"node-red",
@@ -29,7 +29,8 @@
 		"nodes": {
 			"retrieve-forecast": "retrieve-forecast.js",
 			"best-hour": "best-hour.js",
-			"current-value": "current-value.js"
+			"current-value": "current-value.js",
+			"decorate-obis": "decorate-obis.js"
 		}
 	}
 }
