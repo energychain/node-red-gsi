@@ -1,7 +1,7 @@
 {
 	"name": "node-red-contrib-gsi",
-	"version": "1.0.3",
-	"description": "GSI (GrünstromIndex) Node for Node-Red. Based on GSI OBIS Code Decorators.",
+	"version": "1.0.4",
+	"description": "GSI (Corrently GrünstromIndex) Node for Node-Red. Based on GSI OBIS Code Decorators.",
 	"keywords": [
 		"node-red",
 		"gsi",
