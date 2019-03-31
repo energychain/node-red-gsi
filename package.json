@@ -1,5 +1,5 @@
 {
-	"name": "node-red-gsi",
+	"name": "node-red-contrib-gsi",
 	"version": "1.0.1",
 	"description": "GSI (GrünstromIndex) Node for Node-Red",
 	"keywords": [
