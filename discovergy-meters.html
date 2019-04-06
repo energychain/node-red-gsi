@@ -1,0 +1,32 @@
+<script type="text/javascript">
+    RED.nodes.registerType('discovergy-meters',{
+        category: 'GrünstromIndex',
+        color: '#a6bbcf',
+        defaults: {
+            DISCOVERGY_ACCOUNT: {value:"demo@discovergy.com"},
+            DISCOVERGY_PASSWORD: {value:"demo"},
+            meterId: {value:"1124001633"},
+        },
+        inputs:1,
+        outputs:1,
+        icon: "bridge-dash.png",
+        label: function() {
+            return 'Discovergy Meters';
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="discovergy-meters">
+    <div class="form-row">
+        <label for="node-input-DISCOVERGY_ACCOUNT"><i class="icon-tag"></i> Discovergy Account</label>
+        <input type="text" id="node-input-DISCOVERGY_ACCOUNT" placeholder="(Discovergy Account / eq. Email)">
+    </div>
+    <div class="form-row">
+        <label for="node-input-DISCOVERGY_PASSWORD"><i class="icon-tag"></i> Discovergy Password</label>
+        <input type="password" id="node-input-DISCOVERGY_PASSWORD" placeholder="(Discovergy Password)">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="discovergy-meters">
+    <p>Decorates Discovergy Meters Reading with GrünstromIndex related OBIS Codes (1.8.1 and 1.8.2)</p>
+</script>
