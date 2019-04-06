@@ -1,7 +1,7 @@
 module.exports = function(RED) {
     const http_request = require("request");
     const GSI_DGY = require("gsi-discovergy");
-    function RetrieveDiscovergyMeter(config) {
+    function RetrieveDiscovergyMeters(config) {
         RED.nodes.createNode(this,config);
         var node = this;
         node.on('input', function(msg) {
@@ -18,5 +18,5 @@ module.exports = function(RED) {
             });
         });
     }
-    RED.nodes.registerType("discovergy-meters",RetrieveDiscovergyMeter);
+    RED.nodes.registerType("discovergy-meters",RetrieveDiscovergyMeters);
 }
