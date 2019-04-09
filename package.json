@@ -1,6 +1,6 @@
 {
 	"name": "node-red-contrib-gsi",
-	"version": "1.0.14",
+	"version": "1.0.15",
 	"description": "GSI (Corrently GrünstromIndex) Node for Node-Red. Based on GSI OBIS Code Decorators.",
 	"keywords": [
 		"node-red",
@@ -30,6 +30,7 @@
 		"keba_gsi_obis": "^1.0.2",
 		"node-red-dashboard": "^2.14.0",
 		"request": "^2.88.0",
+		"tplink_kasa_gsi": "^1.0.1",
 		"varta_engion_gsi_obis": "^1.0.0"
 	},
 	"node-red": {
@@ -42,7 +43,8 @@
 			"discovergy-meters": "discovergy-meters.js",
 			"varta-storage-meter": "varta-storage-meter.js",
 			"keba-p30-meter": "keba-p30-meter.js",
-			"keba-p30-control": "keba-p30-control.js"
+			"tplink-hs110-cloudmeter": "tplink-hs110-cloudmeter.js",
+			"tplink-hs110-cloudmeters": "tplink-hs110-cloudmeters.js"
 		}
 	}
 }
