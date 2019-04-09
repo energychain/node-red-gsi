@@ -6,8 +6,9 @@ module.exports = function(RED) {
         var node = this;
         node.on('input', function(msg) {
           let instance = new GSI({zip:config.zip});
-          instance.meter(config.DEVICE_IP,null).then(function(meter) {            
+          instance.meter(config.DEVICE_IP,null).then(function(meter) {
             msg.payload=meter;
+            node.status({fill:"green",shape:"dot",text:(meter["1.8.0"]/1000).toFixed(3)+" kWh"});
             node.send(msg);
           });
         });
