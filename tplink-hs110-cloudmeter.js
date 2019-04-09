@@ -8,6 +8,9 @@ module.exports = function(RED) {
             let instance = new GSI_TPLINK({TPLINK_PASSWORD:config.TPLINK_PASSWORD,TPLINK_ACCOUNT:config.TPLINK_ACCOUNT,ZIP:config.ZIP});
             instance.meter(config.meterId).then(function(meter) {
               msg.payload=meter;
+              msg.parts = {
+                id:meter.meterId
+              }
               node.status({fill:"green",shape:"dot",text:(meter["1.8.0"]/1000).toFixed(3)+" kWh"});
               node.send(msg);
             }).catch(function(e) {

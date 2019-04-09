@@ -7,8 +7,14 @@ module.exports = function(RED) {
         node.on('input', function(msg) {
           let instance = new GSI({zip:config.zip});
           instance.meter(config.DEVICE_IP,null).then(function(meter) {
+            meter["1.8.0"] = meter["1.8.0"]/10;
+            meter["1.8.1"] = meter["1.8.1"]/10;
+            meter["1.8.2"] = meter["1.8.2"]/10;
             msg.payload=meter;
-            node.status({fill:"green",shape:"dot",text:(meter["1.8.0"]/10000).toFixed(3)+" kWh"});
+            msg.parts = {
+              id:meter.meterId
+            };
+            node.status({fill:"green",shape:"dot",text:(meter["1.8.0"]/1000).toFixed(3)+" kWh"});
             node.send(msg);
           });
         });

@@ -18,8 +18,12 @@ module.exports = function(RED) {
             http_request.post("https://api.corrently.io/core/reading",{form:req_obj},function(e,r,b) {
               let _gsi = JSON.parse(b);
               msg.payload = _gsi;
+              msg.parts = {
+                id:_gsi.meterId
+              }
+
               node.send(msg);
-            })            
+            })
         });
     }
     RED.nodes.registerType("decorate-obis",DecorateObis);
