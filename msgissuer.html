@@ -1,0 +1,26 @@
+<script type="text/javascript">
+    RED.nodes.registerType('msgissuer',{
+        category: 'GrünstromIndex',
+        color: '#a6bbcf',
+        defaults: {
+            zip: {value:"69256"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "bridge-dash.png",
+        label: function() {
+            return 'Pre evaluated switches and values of GreenPowerIndex in Germany';
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="msgissuer">
+    <div class="form-row">
+        <label for="node-input-zip"><i class="icon-tag"></i> Postleitzahl</label>
+        <input type="text" id="node-input-zip" placeholder="(10117)">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="best-hour">
+    <p>Retrieves forecasted Green Power Index (Corrently GrünstromIndex) and returns a payload msg object suitable for most flows/automation requirement.</p>
+</script>
