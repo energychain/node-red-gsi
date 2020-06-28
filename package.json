@@ -1,7 +1,7 @@
 {
 	"name": "node-red-contrib-gsi",
-	"version": "1.0.21",
-	"description": "GSI (Corrently GrünstromIndex) Node for Node-Red. Based on GSI OBIS Code Decorators.",
+	"version": "1.0.22",
+	"description": "GSI (Corrently GrünstromIndex) Nodes for Node-Red. Based on GreenPowerIndex Decorators and Corrently API.",
 	"keywords": [
 		"node-red",
 		"gsi",
@@ -11,7 +11,8 @@
 		"obis",
 		"energy",
 		"greenpowerindex",
-		"gsi"
+		"gsi",
+		"co2footprint"
 	],
 	"homepage": "https://github.com/energychain/node-red-gsi#readme",
 	"bugs": {
@@ -45,6 +46,7 @@
 			"msgissuer": "msgissuer.js",
 			"current-value": "current-value.js",
 			"decorate-obis": "decorate-obis.js",
+			"decorate-co2": "decorate-co2.js",
 			"discovergy-meter": "discovergy-meter.js",
 			"discovergy-meters": "discovergy-meters.js",
 			"varta-storage-meter": "varta-storage-meter.js",
