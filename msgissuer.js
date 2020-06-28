@@ -33,14 +33,17 @@ module.exports = function(RED) {
      let min_ts =0;
      let max_ts =0;
      let switches = [];
+     m.timestamp = {};
+     m.relativeHours = {};
+     m.bestHours = {};
+     m.fourHoursIn24 = {};
 
      for(let i=0;i<gsi.forecast.length;i++) {
-       m.timetamp = {};
-       m.timestamp[''++gsi.forecast[i].timeStamp] = gsi.forecast[i].gsi;
 
+       m.timestamp['h'+gsi.forecast[i].timeStamp] = gsi.forecast[i].gsi;
 
        if(gsi.forecast[i].timeStamp > now) {
-         m.relativeHours[''+Math.floor((gsi.forecast[i].timeStamp-now)/3600000)]=gsi.forecast[i].gsi;
+         m.relativeHours['h'+Math.floor((gsi.forecast[i].timeStamp-now)/3600000)]=gsi.forecast[i].gsi;
        }
        if(i<24) {
          switches.push(gsi.forecast[i]);
@@ -78,9 +81,9 @@ module.exports = function(RED) {
      let latest_gsi = gsi.forecast[0].gsi;
      for(let i=0;i<switches.length;i++) {
         if(switches[i].gsi >= latest_gsi) {
-          m.bestHours[''+i] = 0;
+          m.bestHours['h'+i] = 0;
         } else {
-          m.bestHours[''+i] = 1;
+          m.bestHours['h'+i] = 1;
         }
       }
 
@@ -105,13 +108,14 @@ module.exports = function(RED) {
            timeStamp =  matrix['h_'+i].timeStamp;
          }
        }
-       m.fourHoursIn24[''+z] = {
+       m.fourHoursIn24['h'+z] = {
          timeStamp:timeStamp,
          isoString: moment(timeStamp).format()
        }
 
      }
-     resolve(m);
+
+     return m;
     }
 
     function MsgIssuer(config) {
@@ -120,14 +124,23 @@ module.exports = function(RED) {
         node.on('input', async function(msg) {
             let gsi = await getGSI(config.zip);
             msg.payload = await builGSImsg(gsi);
-            node.status({fill:"green",shape:"dot",text:new Date(gsi.data[0].epochtime*1000).toLocaleString()});
+            let color = "green";
+            if(msg.payload.now < 55) {
+              color = "yellow";
+            }
+            if(msg.payload.now < 45) {
+              color = "red";
+            }
+            node.status({fill: color,shape:"dot",text:moment(msg.payload.gsi.forecast[0].timeStamp).format()+' '+msg.payload.now});
             node.send(msg);
-
         });
     }
 
     const init = async function() {
       await storage.init();
     }
+
+    init();
+
     RED.nodes.registerType("msgissuer",MsgIssuer);
 }
