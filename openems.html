@@ -1,0 +1,41 @@
+<script type="text/javascript">
+    RED.nodes.registerType('openems',{
+        category: 'GrünstromIndex',
+        color: '#a6bbcf',
+        defaults: {
+            zip: {value:"69256"},
+            baseurl: {value:"http://user:user@localhost:8084/rest/channel/"},
+            component: {value:"_sum"},
+            channel: {value:"ActivePowerL1"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "bridge-dash.png",
+        label: function() {
+            return 'OpenEMS Data';
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="openems">
+    <div class="form-row">
+        <label for="node-input-zip"><i class="icon-tag"></i> Postleitzahl</label>
+        <input type="text" id="node-input-zip" placeholder="(10117)">
+    </div>
+    <div class="form-row">
+        <label for="node-input-baseurl"><i class="icon-tag"></i> Basis URL</label>
+        <input type="text" id="node-input-baseurl" placeholder="(http://user:user@localhost:8084/rest/channel/)">
+    </div>
+    <div class="form-row">
+        <label for="node-input-component"><i class="icon-tag"></i> Component ID</label>
+        <input type="text" id="node-input-component" placeholder="(_sum,meter0,ess0,...)">
+    </div>
+    <div class="form-row">
+        <label for="node-input-channel"><i class="icon-tag"></i> Channel ID</label>
+        <input type="text" id="node-input-channel" placeholder="(ActivePowerL1,SoC,...)">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="openems">
+    <p>Retrieves Data from OpenEMS and returns as msg.payload</p>
+</script>

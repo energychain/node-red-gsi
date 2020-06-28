@@ -1,6 +1,6 @@
 {
 	"name": "node-red-contrib-gsi",
-	"version": "1.0.23",
+	"version": "1.0.24",
 	"description": "GSI (Corrently GrünstromIndex) Nodes for Node-Red. Based on GreenPowerIndex Decorators and Corrently API.",
 	"keywords": [
 		"node-red",
@@ -12,7 +12,8 @@
 		"energy",
 		"greenpowerindex",
 		"gsi",
-		"co2footprint"
+		"co2footprint",
+		"openems"
 	],
 	"homepage": "https://github.com/energychain/node-red-gsi#readme",
 	"bugs": {
@@ -53,7 +54,8 @@
 			"keba-p30-meter": "keba-p30-meter.js",
 			"keba-p30-control": "keba-p30-control.js",
 			"tplink-hs110-cloudmeter": "tplink-hs110-cloudmeter.js",
-			"tplink-hs110-cloudmeters": "tplink-hs110-cloudmeters.js"
+			"tplink-hs110-cloudmeters": "tplink-hs110-cloudmeters.js",
+			"openems": "openems.js"
 		}
 	}
 }
