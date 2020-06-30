@@ -17,12 +17,13 @@ module.exports = function(RED) {
           console.log('SKO',sko);
           let data = await storage.getItem(sko);
           if((typeof data == 'undefined') || (data == null)) {
-            let responds = await axios.get('https://api.corrently.io/core/stromkonto?account='+sko);
+            let respondsSKO = await axios.get('https://api.corrently.io/core/stromkonto?account='+sko);
+            let respondsEXD = await axios.get('https://api.corrently.io/core/exd?account='+sko);
 
+            data = respondsSKO.data;
+            if(typeof respondsEXD.data['2.8.0'] != "undefined") data["2.8.0"] =  respondsEXD.data['2.8.0'];
+            if(typeof respondsEXD.data['cap'] != "undefined") data["cap"] =  respondsEXD.data['cap'];
 
-            data = responds.data;
-            console.log(responds);
-            console.log(data);
             await storage.setItem(sko,data);
           }
           msg.payload=data;
