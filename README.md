@@ -7,6 +7,15 @@ cd ~/.node-red
 npm install --save node-red-contrib-gsi
 ```
 
+In der ~/.node-red/settings.js den folgenden Eintrag
+```
+contextStorage: {
+     default: {
+         module:"localfilesystem"
+     },
+ },
+```
+
 ## Über den GrünstromIndex
 Die Technologie hinter dem GrünstromIndex beinhaltet unterschiedlichste Datenquellen, darunter lokale Wetterdaten, der Transport und die Nutzung des Stroms, woraus sich ein entsprechender Preisindex ergibt. Dieser ist die Grundlage für einen variablen Stromtarif, welcher seit dem Jahr 2010 von jedem Stromanbieter obligatorisch angeboten werden muss.
 
