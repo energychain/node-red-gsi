@@ -1,6 +1,6 @@
 {
 	"name": "node-red-contrib-gsi",
-	"version": "1.0.27",
+	"version": "1.0.29",
 	"description": "GSI (Corrently GrünstromIndex) Nodes for Node-Red. Based on GreenPowerIndex Decorators and Corrently API.",
 	"keywords": [
 		"node-red",
@@ -55,6 +55,7 @@
 			"keba-p30-control": "keba-p30-control.js",
 			"tplink-hs110-cloudmeter": "tplink-hs110-cloudmeter.js",
 			"tplink-hs110-cloudmeters": "tplink-hs110-cloudmeters.js",
+			"stromkonto": "stromkonto.js",
 			"openems": "openems.js"
 		}
 	}

@@ -1,0 +1,26 @@
+<script type="text/javascript">
+    RED.nodes.registerType('stromkonto',{
+        category: 'GrünstromIndex',
+        color: '#a6bbcf',
+        defaults: {
+            sko: {value:"0x7866f187f30cd52Bdbd5c4184fD3ee6168Ae0dB4"}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "bridge-dash.png",
+        label: function() {
+            return 'Corrently Stromkonto';
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="stromkonto">
+    <div class="form-row">
+        <label for="node-input-sko"><i class="icon-tag"></i> Stromkonto</label>
+        <input type="text" id="node-input-sko" placeholder="0x12345...">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="stromkonto">
+    <p>Retrieves information from stromkonto.net</p>
+</script>
