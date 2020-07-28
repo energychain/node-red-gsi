@@ -1,6 +1,6 @@
 {
 	"name": "node-red-contrib-gsi",
-	"version": "1.0.31",
+	"version": "1.0.32",
 	"description": "GSI (Corrently GrünstromIndex) Nodes for Node-Red. Based on GreenPowerIndex Decorators and Corrently API.",
 	"keywords": [
 		"node-red",
@@ -19,6 +19,10 @@
 	"bugs": {
 		"url": "https://github.com/energychain/node-red-gsi/issues"
 	},
+	"funding": {
+	 "type": "corporation",
+	 "url": "https://www.stromdao.de/crowdfunding/info"
+ 	},
 	"license": "ISC",
 	"author": "STROMDAO <kontakt@stromdao.de>",
 	"main": "index.js",
