@@ -129,16 +129,32 @@ module.exports = function(RED) {
               console.log('Corrently GSI requires persistent storage for global values. Consider enable contextStorage in your settings.js');
             }
             let gsi = await getGSI(zip);
-            msg.payload = await builGSImsg(gsi);
+            let msg_gsi = {payload : await builGSImsg(gsi)};
+
+            let msg_influx = [];
+            for(let i = 0;i<msg_gsi.payload.gsi.forecast.length;i++) {
+                let point = {};
+                if((typeof config.name !== 'undefined') && (config.name !== null)) {
+                  point.measurement = config.measurement;
+                } else {
+                  point.measurement = "GSI"+node.id;
+                }
+
+                point.fields = msg_gsi.payload.gsi.forecast[i];
+                point.timestamp = ( msg_gsi.payload.gsi.forecast[i].timeStamp * 1000000) ;
+                msg_influx.push(point);
+            }
+
+
             let color = "green";
-            if(msg.payload.now < 55) {
+            if(msg_gsi.payload.now < 55) {
               color = "yellow";
             }
-            if(msg.payload.now < 45) {
+            if(msg_gsi.payload.now < 45) {
               color = "red";
             }
             node.status({fill: color,shape:"dot",text:moment(msg.payload.gsi.forecast[0].timeStamp).format()+' '+msg.payload.now});
-            node.send(msg);
+            node.send([msg_gsi,{payload:msg_influx}]);
         });
     }
 
