@@ -132,16 +132,23 @@ module.exports = function(RED) {
             let msg_gsi = {payload : await builGSImsg(gsi)};
 
             let msg_influx = [];
+
             for(let i = 0;i<msg_gsi.payload.gsi.forecast.length;i++) {
                 let point = {};
-                if((typeof config.name !== 'undefined') && (config.name !== null)) {
+                if((typeof config.measurement !== 'undefined') && (config.measurement !== null)) {
                   point.measurement = config.measurement;
                 } else {
                   point.measurement = "GSI"+node.id;
                 }
 
                 point.fields = msg_gsi.payload.gsi.forecast[i];
-                point.timestamp = ( msg_gsi.payload.gsi.forecast[i].timeStamp * 1000000) ;
+
+                let ts = new Date(msg_gsi.payload.gsi.forecast[i].timeStamp);
+                ts.setMinutes(0);
+                ts.setSeconds(0);
+                ts.setMilliseconds(0);
+
+                point.timestamp = ( ts.getTime() * 1000000) ;
                 msg_influx.push(point);
             }
 
@@ -153,7 +160,7 @@ module.exports = function(RED) {
             if(msg_gsi.payload.now < 45) {
               color = "red";
             }
-            node.status({fill: color,shape:"dot",text:moment(msg.payload.gsi.forecast[0].timeStamp).format()+' '+msg.payload.now});
+            node.status({fill: color,shape:"dot",text:moment(msg_gsi.payload.gsi.forecast[0].timeStamp).format()+' '+msg.payload.now});
             node.send([msg_gsi,{payload:msg_influx}]);
         });
     }
