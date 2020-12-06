@@ -8,7 +8,7 @@ module.exports = function(RED) {
     const getGSI = async function(zipCode) {
       let gsi = await storage.getItem('gsi_'+zipCode);
       if(gsi == null) {
-        let responds = await axios.get('https://api.corrently.io/core/gsi?zip='+zipCode);
+        let responds = await axios.get('https://corrently.de/api/stromdao/gsi?zip='+zipCode);
         gsi = responds.data;
         storage.setItem('gsi_'+zipCode,gsi);
         return gsi;

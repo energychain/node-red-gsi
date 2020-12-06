@@ -10,7 +10,7 @@ module.exports = function(RED) {
             } else {
               console.log('Corrently GSI requires persistent storage for global values. Consider enable contextStorage in your settings.js');
             }
-            http_request("https://api.corrently.io/core/gsi?plz="+zip,function(e,r,b) {
+            http_request("https://corrently.de/api/stromdao/gsi?plz="+zip,function(e,r,b) {
                 let json = JSON.parse(b);
                 msg.payload = json;
                 node.send(msg);
