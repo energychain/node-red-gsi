@@ -34,7 +34,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"dependencies": {
-		"axios": "^0.19.2",
+		"axios": "^0.21.1",
 		"gsi-discovergy": "^1.0.15",
 		"keba_gsi_obis": "^1.0.2",
 		"moment": "^2.27.0",
