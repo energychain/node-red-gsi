@@ -1,20 +1,20 @@
 module.exports = function(RED) {
-    const http_request = require("request");
+    const gsifetch = require("./gsi-fetch");
     function RetrieveGSIForecast(config) {
         RED.nodes.createNode(this,config);
         var node = this;
-        node.on('input', function(msg) {
+        node.on('input', async function(msg) {
             let zip = config.zip;
             if((typeof node.context().global.get('zip') !== 'undefined') && (node.context().global.get('zip') !== null) && (node.context().global.get('zip').length == 5)) {
               zip = node.context().global.get('zip');
             } else {
               console.log('Corrently GSI requires persistent storage for global values. Consider enable contextStorage in your settings.js');
             }
-            http_request("https://corrently.de/api/stromdao/gsi?plz="+zip,function(e,r,b) {
-                let json = JSON.parse(b);
-                msg.payload = json;
-                node.send(msg);
-            });
+            let key = config.apikey;
+            if((typeof key == 'undefined') || (key == null)) key='node-red-contrib-gsi-V2-';
+            if(key.length !== 42) key += '_' + node.id;
+            msg.payload = await gsifetch(key,zip,node.context().flow);
+            node.send(msg);
         });
     }
     RED.nodes.registerType("retrieve-forecast",RetrieveGSIForecast);
